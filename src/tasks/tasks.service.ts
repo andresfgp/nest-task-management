@@ -50,12 +50,10 @@ export class TasksService {
   }
 
   createTasks(createTaskDto: CreateTaskDto): Task {
-    const { title, description } = createTaskDto;
     const task: Task = {
       id: uuid(),
-      title,
-      description,
       status: TaskStatus.OPEN,
+      ...createTaskDto,
     };
     this.tasks.push(task);
     return task;
